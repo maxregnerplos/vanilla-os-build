@@ -1,7 +1,4 @@
-# Ubuntu Desnapified! + Vanilla Gnome 42 desktop
-
-Ready-made ISOs: https://drive.google.com/drive/folders/1Og6PLchxao5z0BxylKCIweelwLAL0GhO?usp=sharing
-(From 01.05.2022 ISO images will be updated on the first day of every month to keep the OS and the packages fresh.)
+# Ubuntu Vanilla GNOME
 
 This project is based and improved upon [Ubuntu Remixes](https://gitlab.com/ubuntu-unity/ubuntu-remixes).
 

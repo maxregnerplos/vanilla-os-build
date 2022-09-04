@@ -26,13 +26,13 @@ jobs:
       run: mkdir out
       
     - name: Move ISO to the output folder
-      run: mv ubuntu-desnap-vanilla-gnome-22.04.iso out
+      run: mv ubuntu-vanilla-gnome-22.04.iso out
       
     - name: Move md5 checksum to the output folder
-      run: mv ubuntu-desnap-vanilla-gnome-22.04.iso.md5sum out
+      run: mv ubuntu-vanilla-gnome-22.04.iso.md5sum out
       
     - name: Upload ISO
       uses: actions/upload-artifact@v3
       with:
-          name: ubuntu-desnap-vanilla-gnome-22.04
+          name: ubuntu-vanilla-gnome-22.04
           path: out
