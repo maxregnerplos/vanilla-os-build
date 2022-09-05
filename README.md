@@ -3,7 +3,7 @@
   <h1 align="center">Ubuntu Vanilla GNOME</h1>
   <p align="center">Taste the GNOME Vanilla experience on Ubuntu</p>
   <small>This project is not affiliated with the GNOME Foundation or Canonical.</small>
-  <br/>
+  <br/><br/>
   <a href="https://github.com/mirkobrombin/ubuntu-vanilla-gnome/actions/workflows/makefile.yml">
     <img src="https://github.com/mirkobrombin/ubuntu-vanilla-gnome/actions/workflows/makefile.yml/badge.svg" alt="Build ISO">
   </a>
