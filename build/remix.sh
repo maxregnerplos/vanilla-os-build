@@ -78,4 +78,4 @@ rm /tmp/ubuntu-smoother.deb
 
 # Add Ubuntu Smoother to skel so it will be applied to new users
 mkdir -p /etc/skel/.config/autostart
-cp /usr/share/applications/pm.mirko.UbuntuSmoother.desktop /etc/skel/.config/autostart/
+cp /usr/share/applications/pm.mirko.UbuntuSmoother.desktop /etc/skel/.config/autostart/ubuntu-smoother.desktop
