@@ -64,3 +64,18 @@ snap remove --purge snap-store
 # Install flatpak and enable Flathub
 apt install -y flatpak
 flatpak remote-add --system flathub https://flathub.org/repo/flathub.flatpakrepo
+
+# Install Ubuntu Smoother
+FALLBACK="https://github.com/mirkobrombin/ubuntu-smoother/releases/download/0.0.2/ubuntu-smoother_0.0.2_amd64.deb"
+URL=$(curl -s https://api.github.com/repos/mirkobrombin/ubuntu-smoother/releases/latest | grep "browser_download_url" | grep "amd64.deb" | cut -d '"' -f 4)
+if [ -z "$URL" ]; then
+    URL=$FALLBACK
+fi
+wget -O /tmp/ubuntu-smoother.deb $URL
+dpkg -i /tmp/ubuntu-smoother.deb
+apt install -y -f
+rm /tmp/ubuntu-smoother.deb
+
+# Add Ubuntu Smoother to skel so it will be applied to new users
+mkdir -p /etc/skel/.config/autostart
+cp /usr/share/applications/pm.mirko.UbuntuSmoother.desktop /etc/skel/.config/autostart/
