@@ -1,4 +1,13 @@
-# Ubuntu Vanilla GNOME
+<div align="center">
+  <img src="assets/images/ubuntu-vanilla-gnome-logo.svg" width="64">
+  <h1 align="center">Ubuntu Vanilla GNOME</h1>
+  <p align="center">Taste the GNOME Vanilla experience on Ubuntu</p>
+  <small>This project is not affiliated with the GNOME Foundation or Canonical.</small>
+</div>
+
+<br/>
+
+## Introduction
 The purpose of this flavor is to provide a vanilla GNOME experience on Ubuntu. Flatpak is
 installed and configured with the Flathub repository by default and the GNOME Software
 application replaces the Snapcraft Store. There is no de-snapification of the system, so
