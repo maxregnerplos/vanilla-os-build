@@ -66,16 +66,14 @@ snap remove --purge snap-store
 apt install -y flatpak
 flatpak remote-add --system flathub https://flathub.org/repo/flathub.flatpakrepo
 
-# Install Vanilla OS First Setup (TODO: move to PPA)
-FALLBACK="https://github.com/Vanilla-OS/first-setup/releases/download/0.0.4/vanilla-first-setup.0.4_amd64.deb"
-URL=$(curl -s https://api.github.com/repos/vanilla-os/first-setup/releases/latest | grep "browser_download_url" | grep "amd64.deb" | cut -d '"' -f 4)
-if [ -z "$URL" ]; then
-    URL=$FALLBACK
-fi
-wget -O /tmp/first-setup.deb $URL
-dpkg -i /tmp/first-setup.deb
-apt install -y -f
-rm /tmp/first-setup.deb
+# Install Vanilla OS PPA
+apt install -y curl gpg
+curl -s --compressed "https://vanilla-os.github.io/ppa/KEY.gpg" | gpg --dearmor | sudo tee /usr/share/keyrings/vanilla-archive-keyring.gpg
+sudo curl -s --compressed -o /etc/apt/sources.list.d/vanilla-os.list "https://vanilla-os.github.io/ppa/vanilla-os.list"
+sudo apt update
+
+# Install Vanilla OS First Setup
+sudo apt install -y vanilla-first-setup
 
 # Add Vanilla First Setup to skel so it will be applied to new users
 mkdir -p /etc/skel/.config/autostart
