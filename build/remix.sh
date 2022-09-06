@@ -7,8 +7,11 @@ apt full-upgrade -y
 add-apt-repository -y --no-update universe
 add-apt-repository -y multiverse
 
-# Add Vanilla OS repository
-add-apt-repository -y ppa:vanillaos/all
+# Install Vanilla OS PPA
+apt install -y curl gpg
+curl -s --compressed "https://vanilla-os.github.io/ppa/KEY.gpg" | gpg --dearmor | sudo tee /usr/share/keyrings/vanilla-archive-keyring.gpg
+sudo curl -s --compressed -o /etc/apt/sources.list.d/vanilla-os.list "https://vanilla-os.github.io/ppa/vanilla-os.list"
+sudo apt update
 
 # Install vanilla Gnome desktop and remove Ubuntu session
 apt install -y \
@@ -66,19 +69,14 @@ snap remove --purge snap-store
 apt install -y flatpak
 flatpak remote-add --system flathub https://flathub.org/repo/flathub.flatpakrepo
 
-# Install Vanilla OS PPA
-apt install -y curl gpg
-curl -s --compressed "https://vanilla-os.github.io/ppa/KEY.gpg" | gpg --dearmor | sudo tee /usr/share/keyrings/vanilla-archive-keyring.gpg
-sudo curl -s --compressed -o /etc/apt/sources.list.d/vanilla-os.list "https://vanilla-os.github.io/ppa/vanilla-os.list"
-sudo apt update
-
 # Install Vanilla OS First Setup
 sudo apt install -y vanilla-first-setup
-
-# Add Vanilla First Setup to skel so it will be applied to new users
 mkdir -p /etc/skel/.config/autostart
 if [ -f /usr/share/applications/io.github.vanilla-os.FirstSetup.desktop ]; then
     cp /usr/share/applications/io.github.vanilla-os.FirstSetup.desktop /etc/skel/.config/autostart/
 else
     cp /usr/local/share/applications/io.github.vanilla-os.FirstSetup.desktop /etc/skel/.config/autostart/
 fi
+
+# Install Vanilla OS Plymouth theme
+apt install -y plymouth-theme-vanilla
