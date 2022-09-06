@@ -4,8 +4,8 @@
   <p align="center">Taste the GNOME Vanilla experience on Ubuntu</p>
   <small>This project is not affiliated with the GNOME Foundation or Canonical.</small>
   <br/><br/>
-  <a href="https://github.com/mirkobrombin/vanilla-os/actions/workflows/makefile.yml">
-    <img src="https://github.com/mirkobrombin/vanilla-os/actions/workflows/makefile.yml/badge.svg" alt="Build ISO">
+  <a href="https://github.com/vanilla-os/vanilla-os-build/actions/workflows/makefile.yml">
+    <img src="https://github.com/vanilla-os/vanilla-os-build/actions/workflows/makefile.yml/badge.svg" alt="Build ISO">
   </a>
 </div>
 
