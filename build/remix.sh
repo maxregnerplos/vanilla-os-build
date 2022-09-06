@@ -24,7 +24,6 @@ apt install -y \
     gnome-accessibility-themes \
     gnome-bluetooth \
     gnome-disk-utility \
-    gnome-initial-setup \
     gnome-keyring \
     gnome-software gnome-software-plugin-flatpak gnome-software-plugin-snap \
     gnome-terminal \
