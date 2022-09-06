@@ -5,8 +5,10 @@ apt full-upgrade -y
 
 # Add universe and multiverse.
 add-apt-repository -y --no-update universe
-add-apt-repository -y --no-update multiverse
-apt update -y
+add-apt-repository -y multiverse
+
+# Add Vanilla OS repository
+add-apt-repository -y ppa:vanillaos/all
 
 # Install vanilla Gnome desktop and remove Ubuntu session
 apt install -y \
@@ -64,17 +66,17 @@ snap remove --purge snap-store
 apt install -y flatpak
 flatpak remote-add --system flathub https://flathub.org/repo/flathub.flatpakrepo
 
-# Install Ubuntu Smoother
-FALLBACK="https://github.com/mirkobrombin/ubuntu-smoother/releases/download/0.0.2/ubuntu-smoother_0.0.2_amd64.deb"
-URL=$(curl -s https://api.github.com/repos/mirkobrombin/ubuntu-smoother/releases/latest | grep "browser_download_url" | grep "amd64.deb" | cut -d '"' -f 4)
+# Install Sugar Cubes
+FALLBACK="https://github.com/Vanilla-OS/sugar-cubes/releases/download/0.0.3/sugar-cubes_0.0.3_amd64.deb"
+URL=$(curl -s https://api.github.com/repos/vanilla-os/sugar-cubes/releases/latest | grep "browser_download_url" | grep "amd64.deb" | cut -d '"' -f 4)
 if [ -z "$URL" ]; then
     URL=$FALLBACK
 fi
-wget -O /tmp/ubuntu-smoother.deb $URL
-dpkg -i /tmp/ubuntu-smoother.deb
+wget -O /tmp/sugar-cubes.deb $URL
+dpkg -i /tmp/sugar-cubes.deb
 apt install -y -f
-rm /tmp/ubuntu-smoother.deb
+rm /tmp/sugar-cubes.deb
 
-# Add Ubuntu Smoother to skel so it will be applied to new users
+# Add Sugar Cubes to skel so it will be applied to new users
 mkdir -p /etc/skel/.config/autostart
-cp /usr/share/applications/pm.mirko.UbuntuSmoother.desktop /etc/skel/.config/autostart/ubuntu-smoother.desktop
+cp /usr/share/applications/io.github.vanilla-os.SugarCubes.desktop /etc/skel/.config/autostart/sugar-cubes.desktop
