@@ -45,7 +45,7 @@ apt install -y \
     pulseaudio-module-bluetooth \
     simple-scan \
     ubuntu-gnome-wallpapers \
-    xdg-utils
+    xdg-utils \
     --no-install-recommends
 apt install -y -f
 apt purge -y ubuntu-desktop ubuntu-session
