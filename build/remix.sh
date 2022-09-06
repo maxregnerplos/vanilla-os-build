@@ -66,17 +66,21 @@ snap remove --purge snap-store
 apt install -y flatpak
 flatpak remote-add --system flathub https://flathub.org/repo/flathub.flatpakrepo
 
-# Install Sugar Cubes
-FALLBACK="https://github.com/Vanilla-OS/sugar-cubes/releases/download/0.0.3/sugar-cubes_0.0.3_amd64.deb"
-URL=$(curl -s https://api.github.com/repos/vanilla-os/sugar-cubes/releases/latest | grep "browser_download_url" | grep "amd64.deb" | cut -d '"' -f 4)
+# Install Vanilla OS First Setup (TODO: move to PPA)
+FALLBACK="https://github.com/Vanilla-OS/first-setup/releases/download/0.0.4/vanilla-first-setup.0.4_amd64.deb"
+URL=$(curl -s https://api.github.com/repos/vanilla-os/first-setup/releases/latest | grep "browser_download_url" | grep "amd64.deb" | cut -d '"' -f 4)
 if [ -z "$URL" ]; then
     URL=$FALLBACK
 fi
-wget -O /tmp/sugar-cubes.deb $URL
-dpkg -i /tmp/sugar-cubes.deb
+wget -O /tmp/first-setup.deb $URL
+dpkg -i /tmp/first-setup.deb
 apt install -y -f
-rm /tmp/sugar-cubes.deb
+rm /tmp/first-setup.deb
 
-# Add Sugar Cubes to skel so it will be applied to new users
+# Add Vanilla First Setup to skel so it will be applied to new users
 mkdir -p /etc/skel/.config/autostart
-cp /usr/share/applications/io.github.vanilla-os.SugarCubes.desktop /etc/skel/.config/autostart/sugar-cubes.desktop
+if [ -f /usr/share/applications/io.github.vanilla-os.FirstSetup.desktop ]; then
+    cp /usr/share/applications/io.github.vanilla-os.FirstSetup.desktop /etc/skel/.config/autostart/
+else
+    cp /usr/local/share/applications/io.github.vanilla-os.FirstSetup.desktop /etc/skel/.config/autostart/
+fi
