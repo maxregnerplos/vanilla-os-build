@@ -1,8 +1,5 @@
 #!/bin/sh
 
-# Update the environment
-apt full-upgrade -y
-
 # Add universe and multiverse.
 add-apt-repository -y --no-update universe
 add-apt-repository -y multiverse
