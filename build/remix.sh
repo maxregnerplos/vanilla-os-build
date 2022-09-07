@@ -4,8 +4,14 @@
 add-apt-repository -y --no-update universe
 add-apt-repository -y multiverse
 
+# Install utilities
+apt install -y \
+    capuser \
+    expect \
+    curl \
+    gpg
+
 # Install Vanilla OS PPA
-apt install -y curl gpg
 curl -s --compressed "https://vanilla-os.github.io/ppa/KEY.gpg" | gpg --dearmor | sudo tee /usr/share/keyrings/vanilla-archive-keyring.gpg
 sudo curl -s --compressed -o /etc/apt/sources.list.d/vanilla-os.list "https://vanilla-os.github.io/ppa/vanilla-os.list"
 sudo apt update
