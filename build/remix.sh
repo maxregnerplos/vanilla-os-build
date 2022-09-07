@@ -80,3 +80,6 @@ fi
 
 # Install Vanilla OS Plymouth theme
 apt install -y plymouth-theme-vanilla
+
+# Install Vanilla OS distrologo
+apt install -y vanilla-distrologo
